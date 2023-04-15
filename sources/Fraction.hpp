@@ -36,7 +36,11 @@ namespace ariel {
         bool operator == (const float& left, const Fraction& right) { return true; }
         bool operator == (const Fraction& left, const float& right) { return true; }
         bool operator <= (const Fraction& left, const Fraction& right) { return true; }
+        bool operator <= (const float& left, const Fraction& right) { return true; }
+        bool operator <= (const Fraction& left, const float& right) { return true; }
         bool operator >= (const Fraction& left, const Fraction& right) { return true; }
+        bool operator >= (const float& left, const Fraction& right) { return true; }
+        bool operator >= (const Fraction& left, const float& right) { return true; }
         bool operator > (const Fraction& left, const Fraction& right) { return true; }
         bool operator > (const float& left, const Fraction& right) { return true; }
         bool operator > (const Fraction& left, const float& right) { return true; }
@@ -44,7 +48,7 @@ namespace ariel {
         bool operator < (const float& left, const Fraction& right) { return true; }
         bool operator < (const Fraction& left, const float& right) { return true; }
         // Friend functions.
-        friend Fraction operator * (const float& left, const Fraction& right) { return this; }
+        friend Fraction operator + (const float& left, const Fraction& right) { return this; }
         friend Fraction operator - (const float& left, const Fraction& right) { return this; }
         friend Fraction operator / (const float& left, const Fraction& right) { return this; }
         friend Fraction operator * (const float& left, const Fraction& right) { return this; }
