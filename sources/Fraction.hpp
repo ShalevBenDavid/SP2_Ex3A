@@ -6,23 +6,25 @@
 namespace ariel {
     class Fraction {
         // Private attributes.
-        int _a; // Numerator.
-        int _b; // Denominator.
+        int _numerator; // Numerator.
+        int _denominator; // Denominator.
 
     public:
         // Constructor.
-        Fraction(int a, int b) : _a(a), _b(b) {}
+        Fraction(int numerator, int denominator) : _numerator(numerator), _denominator(denominator) {}
 
         // Operator methods.
-        ostream& operator << (ostream& output, const Fraction& frac) { return (output << frac._a << '/' <<  frac._b); }
-        Fraction operator + (const Fraction& other) const { return this; }
-        Fraction operator + (const float& other) const { return this; }
-        Fraction operator - (const Fraction& other) const { return this; }
-        Fraction operator - (const float& other) const { return this; }
-        Fraction operator / (const Fraction& other) const { return this; }
-        Fraction operator / (const float& other) const { return this; }
-        Fraction operator * (const Fraction& other) const { return this; }
-        Fraction operator * (const float& other) const { return this; }
+        ostream& operator << (ostream& output, const Fraction& frac) {
+            return (output << frac._numerator << '/' <<  frac._denominator);
+        }
+        Fraction operator + (const Fraction& other) const;
+        Fraction operator + (const float& other) const;
+        Fraction operator - (const Fraction& other) const;
+        Fraction operator - (const float& other) const;
+        Fraction operator / (const Fraction& other) const;
+        Fraction operator / (const float& other) const;
+        Fraction operator * (const Fraction& other) const;
+        Fraction operator * (const float& other) const;
         // Prefix increment (++n).
         Fraction& operator++() { return *this; }
         // Prefix decrement (--n).
@@ -32,30 +34,30 @@ namespace ariel {
         // Postfix decrement (--n).
         Fraction operator--(int dont_care) { return this; }
         // Compare operators.
-        bool operator == (const Fraction& left, const Fraction& right) { return true; }
-        bool operator == (const float& left, const Fraction& right) { return true; }
-        bool operator == (const Fraction& left, const float& right) { return true; }
-        bool operator <= (const Fraction& left, const Fraction& right) { return true; }
-        bool operator <= (const float& left, const Fraction& right) { return true; }
-        bool operator <= (const Fraction& left, const float& right) { return true; }
-        bool operator >= (const Fraction& left, const Fraction& right) { return true; }
-        bool operator >= (const float& left, const Fraction& right) { return true; }
-        bool operator >= (const Fraction& left, const float& right) { return true; }
-        bool operator > (const Fraction& left, const Fraction& right) { return true; }
-        bool operator > (const float& left, const Fraction& right) { return true; }
-        bool operator > (const Fraction& left, const float& right) { return true; }
-        bool operator < (const Fraction& left, const Fraction& right) { return true; }
-        bool operator < (const float& left, const Fraction& right) { return true; }
-        bool operator < (const Fraction& left, const float& right) { return true; }
+//        bool operator == (const Fraction& left, const Fraction& right) { return true; }
+//        bool operator == (const float& left, const Fraction& right) { return true; }
+//        bool operator == (const Fraction& left, const float& right) { return true; }
+//        bool operator <= (const Fraction& left, const Fraction& right) { return true; }
+//        bool operator <= (const float& left, const Fraction& right) { return true; }
+//        bool operator <= (const Fraction& left, const float& right) { return true; }
+//        bool operator >= (const Fraction& left, const Fraction& right) { return true; }
+//        bool operator >= (const float& left, const Fraction& right) { return true; }
+//        bool operator >= (const Fraction& left, const float& right) { return true; }
+//        bool operator > (const Fraction& left, const Fraction& right) { return true; }
+//        bool operator > (const float& left, const Fraction& right) { return true; }
+//        bool operator > (const Fraction& left, const float& right) { return true; }
+//        bool operator < (const Fraction& left, const Fraction& right) { return true; }
+//        bool operator < (const float& left, const Fraction& right) { return true; }
+//        bool operator < (const Fraction& left, const float& right) { return true; }
         // Friend functions.
-        friend Fraction operator + (const float& left, const Fraction& right) { return this; }
-        friend Fraction operator - (const float& left, const Fraction& right) { return this; }
-        friend Fraction operator / (const float& left, const Fraction& right) { return this; }
-        friend Fraction operator * (const float& left, const Fraction& right) { return this; }
+        //friend Fraction operator + (const float& left, const Fraction& right) { return this; }
+        //friend Fraction operator - (const float& left, const Fraction& right) { return this; }
+        //friend Fraction operator / (const float& left, const Fraction& right) { return this; }
+        //friend Fraction operator * (const float& left, const Fraction& right) { return this; }
 
         // Get methods.
-        int& getNumerator () { return _a; }
-        int& getDenominator () { return _b; }
+        int& getNumerator () { return _numerator; }
+        int& getDenominator () { return _denominator; }
     };
 }
 
