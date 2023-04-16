@@ -37,8 +37,8 @@ TEST_CASE("Case 2: Equality And No Equality.") {
 
 TEST_CASE("Case 3: Commutative, Associative and Distributive .") {
     Fraction f1 (1, 2);
-    fraction f2 (3, 4);
-    fraction f3 (1, 8);
+    Fraction f2 (3, 4);
+    Fraction f3 (1, 8);
     // ---- Testing: Checking commutative.
     // ---- Expecting: Should work.
     CHECK_EQ(f1 + f2, f2 + f1);
