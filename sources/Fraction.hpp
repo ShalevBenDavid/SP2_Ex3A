@@ -21,23 +21,23 @@ namespace ariel {}
         }
 
         // Arithmetic operators methods.
-        Fraction operator+(const Fraction &other) const;
-        Fraction operator+(const float &other) const;
+        Fraction operator + (const Fraction &other) const;
+        Fraction operator + (const float &other) const;
         friend Fraction operator + (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
-        Fraction operator-(const Fraction &other) const;
-        Fraction operator-(const float &other) const;
+        Fraction operator - (const Fraction &other) const;
+        Fraction operator - (const float &other) const;
         friend Fraction operator - (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
-        Fraction operator/(const Fraction &other) const;
-        Fraction operator/(const float &other) const;
+        Fraction operator / (const Fraction &other) const;
+        Fraction operator / (const float &other) const;
         friend Fraction operator / (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
-        Fraction operator*(const Fraction &other) const;
-        Fraction operator*(const float &other) const;
+        Fraction operator * (const Fraction &other) const;
+        Fraction operator * (const float &other) const;
         friend Fraction operator * (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
@@ -75,11 +75,11 @@ namespace ariel {}
         friend bool operator <= (const float& left, const Fraction& right) { return true; }
         friend bool operator <= (const Fraction& left, const float& right) { return true; }
         friend bool operator >= (const Fraction& left, const Fraction& right) { return true; }
-        friend bool operator >= (const double& left, const Fraction& right) { return true; }
-        friend bool operator >= (const Fraction& left, const double& right) { return true; }
+        friend bool operator >= (const float& left, const Fraction& right) { return true; }
+        friend bool operator >= (const Fraction& left, const float& right) { return true; }
         friend bool operator > (const Fraction& left, const Fraction& right) { return true; }
-        friend bool operator > (const double& left, const Fraction& right) { return true; }
-        friend bool operator > (const Fraction& left, const double& right) { return true; }
+        friend bool operator > (const float& left, const Fraction& right) { return true; }
+        friend bool operator > (const Fraction& left, const float& right) { return true; }
         friend bool operator < (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator < (const float& left, const Fraction& right) { return true; }
         friend bool operator < (const Fraction& left, const float& right) { return true; }

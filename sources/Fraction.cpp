@@ -35,14 +35,18 @@ Fraction Fraction :: operator * (const float& other) const {
 }
 
 int gcd(int numerator, int denominator) {
-    if (denominator == 0) {
-        return numerator;
+    if (!numerator) { return denominator; }
+    if (!denominator) { return numerator; }
+    while (denominator) {
+        int r = numerator % denominator;
+        numerator = denominator;
+        denominator = r;
     }
-    return gcd(denominator, (int) numerator % denominator);
+    return numerator;
 }
 
 void Fraction:: reduce () {
-    int g = gcd(this -> getNumerator(), this -> getDenominator());
-    this -> getNumerator() /= g;
-    this -> getDenominator() /= g;
+    int save_gcd = gcd(this -> getNumerator(), this -> getDenominator());
+    this -> getNumerator() /= save_gcd;
+    this -> getDenominator() /= save_gcd;
 }
