@@ -18,9 +18,16 @@ namespace ariel {
 
         // Stream operators.
         // <<<<<<<<<<<<<<<<<< Operator << >>>>>>>>>>>>>>>>>>
-        friend std::ostream& operator << (std::ostream &output, const Fraction &frac);
+        friend std::ostream& operator << (std::ostream &output, const Fraction &frac) {
+            Fraction temp(frac._numerator, frac._denominator);
+            temp.reduce();
+            output << temp._numerator << '/' << temp._denominator;
+            return output;
+        }
         // <<<<<<<<<<<<<<<<<< Operator >> >>>>>>>>>>>>>>>>>>
-        friend std::istream& operator >> (std::istream& output, const Fraction &frac);
+        friend std::istream& operator >> (std::istream& input, const Fraction &frac) {
+            return input;
+        }
 
         // Arithmetic operators.
         // <<<<<<<<<<<<<<<<<< Operator + >>>>>>>>>>>>>>>>>>
@@ -79,8 +86,8 @@ namespace ariel {
         friend bool operator < (const Fraction &left, const float &right) { return true; }
 
         // Get methods.
-        int &getNumerator() { return _numerator; }
-        int &getDenominator() { return _denominator; }
+        int& getNumerator() { return _numerator; }
+        int& getDenominator() { return _denominator; }
 
         // Methods
         void reduce();

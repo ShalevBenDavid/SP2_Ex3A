@@ -2,19 +2,6 @@
 #include "Fraction.hpp"
 using namespace ariel;
 
-// <<<<<<<<<<<<<<<<<< Operator << >>>>>>>>>>>>>>>>>>
-std::ostream &operator << (std::ostream &output, const Fraction &frac) {
-    Fraction temp(frac._numerator, frac._denominator);
-    temp.reduce();
-    output << temp._numerator << '/' << temp._denominator;
-    return output;
-}
-
-// <<<<<<<<<<<<<<<<<< Operator >> >>>>>>>>>>>>>>>>>>
-friend std::istream& operator >> (std::istream& input, const Fraction &frac) {
-    return input;
-}
-
 // <<<<<<<<<<<<<<<<<< Operator + >>>>>>>>>>>>>>>>>>
 Fraction Fraction :: operator + (const Fraction& other) const {
     Fraction temp ((other._numerator * _denominator) + (_numerator * other._denominator),
@@ -96,26 +83,26 @@ Fraction operator * (const float &left, const Fraction &right) {
 }
 
 // Prefix increment (++n).
-Fraction &operator ++() {
+Fraction& Fraction :: operator ++() {
     _numerator += _denominator;
     return *this;
 }
 
 // Prefix decrement (--n).
-Fraction &operator --() {
+Fraction& Fraction :: operator --() {
     _numerator -= _denominator;
     return *this;
 }
 
 // Postfix increment (n++).
-Fraction operator ++(int dont_care) {
+Fraction Fraction :: operator ++(int dont_care) {
     Fraction copy(*this);
     _numerator += _denominator;
     return copy;
 }
 
 // Postfix decrement (--n).
-Fraction operator --(int dont_care) {
+Fraction Fraction :: operator --(int dont_care) {
     Fraction copy(*this);
     _numerator -= _denominator;
     return copy;
