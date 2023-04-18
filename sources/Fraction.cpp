@@ -1,5 +1,19 @@
 // Created by Shalev Ben David.
 #include "Fraction.hpp"
+using namespace ariel;
+
+// <<<<<<<<<<<<<<<<<< Operator << >>>>>>>>>>>>>>>>>>
+std::ostream &operator << (std::ostream &output, const Fraction &frac) {
+    Fraction temp(frac._numerator, frac._denominator);
+    temp.reduce();
+    output << temp._numerator << '/' << temp._denominator;
+    return output;
+}
+
+// <<<<<<<<<<<<<<<<<< Operator >> >>>>>>>>>>>>>>>>>>
+friend std::istream& operator >> (std::istream& input, const Fraction &frac) {
+    return input;
+}
 
 // <<<<<<<<<<<<<<<<<< Operator + >>>>>>>>>>>>>>>>>>
 Fraction Fraction :: operator + (const Fraction& other) const {
@@ -9,7 +23,16 @@ Fraction Fraction :: operator + (const Fraction& other) const {
     return temp;
 }
 Fraction Fraction :: operator + (const float& other) const {
-    return Fraction(1, 2);
+    Fraction temp (other);
+    temp = *this + temp;
+    temp.reduce();
+    return temp;
+}
+Fraction operator + (const float &left, const Fraction &right) {
+    Fraction temp(left);
+    temp = temp + right;
+    temp.reduce();
+    return temp;
 }
 
 // <<<<<<<<<<<<<<<<<< Operator - >>>>>>>>>>>>>>>>>>
@@ -20,7 +43,16 @@ Fraction Fraction ::operator - (const Fraction& other) const {
     return temp;
 }
 Fraction Fraction :: operator - (const float& other) const {
-    return Fraction(1, 2);
+    Fraction temp (other);
+    temp = *this - temp;
+    temp.reduce();
+    return temp;
+}
+Fraction operator - (const float &left, const Fraction &right) {
+    Fraction temp(left);
+    temp = temp - right;
+    temp.reduce();
+    return temp;
 }
 
 // <<<<<<<<<<<<<<<<<< Operator / >>>>>>>>>>>>>>>>>>
@@ -31,7 +63,16 @@ Fraction Fraction :: operator / (const Fraction& other) const {
     return temp;
 }
 Fraction Fraction :: operator / (const float& other) const {
-    return Fraction(1, 2);
+    Fraction temp (other);
+    temp = *this / temp;
+    temp.reduce();
+    return temp;
+}
+Fraction operator / (const float &left, const Fraction &right) {
+    Fraction temp(left);
+    temp = temp / right;
+    temp.reduce();
+    return temp;
 }
 
 // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
@@ -42,7 +83,42 @@ Fraction Fraction :: operator * (const Fraction& other) const {
     return temp;
 }
 Fraction Fraction :: operator * (const float& other) const {
-    return Fraction(1, 2);
+    Fraction temp (other);
+    temp = *this * temp;
+    temp.reduce();
+    return temp;
+}
+Fraction operator * (const float &left, const Fraction &right) {
+    Fraction temp(left);
+    temp = temp * right;
+    temp.reduce();
+    return temp;
+}
+
+// Prefix increment (++n).
+Fraction &operator ++() {
+    _numerator += _denominator;
+    return *this;
+}
+
+// Prefix decrement (--n).
+Fraction &operator --() {
+    _numerator -= _denominator;
+    return *this;
+}
+
+// Postfix increment (n++).
+Fraction operator ++(int dont_care) {
+    Fraction copy(*this);
+    _numerator += _denominator;
+    return copy;
+}
+
+// Postfix decrement (--n).
+Fraction operator --(int dont_care) {
+    Fraction copy(*this);
+    _numerator -= _denominator;
+    return copy;
 }
 
 /**

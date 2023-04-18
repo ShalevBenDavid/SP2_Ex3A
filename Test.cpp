@@ -56,7 +56,6 @@ TEST_CASE("Case 3: Reduce Form.") {
     Fraction f5 (-1000, 1000);
     CHECK(f5 == -1);
 }
-}
 
 TEST_CASE("Case 4: Checks With 0.") {
     // ---- Testing: Creating a fraction with 0 as numerator.
