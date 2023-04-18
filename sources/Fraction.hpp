@@ -11,31 +11,42 @@ namespace ariel {}
         int _denominator; // Denominator.
 
     public:
-        // Constructor.
-        Fraction(int numerator, int denominator) : _numerator(numerator), _denominator(denominator) {}
+        // Constructors.
+        Fraction (int numerator = 1, int denominator = 1) : _numerator(numerator), _denominator(denominator) {}
+        Fraction (float num) : _numerator(num * 1000),  _denominator(1000) {}
 
-        // Operator methods.
-        friend std::ostream &operator << (std::ostream &output, const Fraction &frac) {
+        // Stream operators.
+        // <<<<<<<<<<<<<<<<<< Operator << >>>>>>>>>>>>>>>>>>
+        friend std::ostream& operator << (std::ostream &output, const Fraction &frac) {
+            output << frac._numerator << '/' << frac._denominator;
+            return output;
+        }
+        // <<<<<<<<<<<<<<<<<< Operator >> >>>>>>>>>>>>>>>>>>
+        friend std::istream& operator >> (std::istream &output, inpu Fraction &frac) {
             output << frac._numerator << '/' << frac._denominator;
             return output;
         }
 
-        // Arithmetic operators methods.
+        // Arithmetic operators.
+        // <<<<<<<<<<<<<<<<<< Operator + >>>>>>>>>>>>>>>>>>
         Fraction operator + (const Fraction &other) const;
         Fraction operator + (const float &other) const;
         friend Fraction operator + (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
+        // <<<<<<<<<<<<<<<<<< Operator - >>>>>>>>>>>>>>>>>>
         Fraction operator - (const Fraction &other) const;
         Fraction operator - (const float &other) const;
         friend Fraction operator - (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
+        // <<<<<<<<<<<<<<<<<< Operator / >>>>>>>>>>>>>>>>>>
         Fraction operator / (const Fraction &other) const;
         Fraction operator / (const float &other) const;
         friend Fraction operator / (const float& left, const Fraction& right) {
             return Fraction(1, 2);
         }
+        // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
         Fraction operator * (const Fraction &other) const;
         Fraction operator * (const float &other) const;
         friend Fraction operator * (const float& left, const Fraction& right) {
@@ -67,26 +78,31 @@ namespace ariel {}
             _numerator -= _denominator;
             return copy;
         }
+
         // Compare operators.
+        // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
         friend bool operator == (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator == (const float& left, const Fraction& right) { return true; }
         friend bool operator == (const Fraction& left, const float& right) { return true; }
+        // <<<<<<<<<<<<<<<<<< Operator <= >>>>>>>>>>>>>>>>>>
         friend bool operator <= (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator <= (const float& left, const Fraction& right) { return true; }
         friend bool operator <= (const Fraction& left, const float& right) { return true; }
+        // <<<<<<<<<<<<<<<<<< Operator >= >>>>>>>>>>>>>>>>>>
         friend bool operator >= (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator >= (const float& left, const Fraction& right) { return true; }
         friend bool operator >= (const Fraction& left, const float& right) { return true; }
+        // <<<<<<<<<<<<<<<<<< Operator > >>>>>>>>>>>>>>>>>>
         friend bool operator > (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator > (const float& left, const Fraction& right) { return true; }
         friend bool operator > (const Fraction& left, const float& right) { return true; }
+        // <<<<<<<<<<<<<<<<<< Operator < >>>>>>>>>>>>>>>>>>
         friend bool operator < (const Fraction& left, const Fraction& right) { return true; }
         friend bool operator < (const float& left, const Fraction& right) { return true; }
         friend bool operator < (const Fraction& left, const float& right) { return true; }
 
         // Get methods.
         int& getNumerator() { return _numerator; }
-
         int& getDenominator() { return _denominator; }
 
         // Methods
