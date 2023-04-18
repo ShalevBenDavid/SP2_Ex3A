@@ -15,12 +15,6 @@ Fraction Fraction :: operator + (const float& other) const {
     temp.reduce();
     return temp;
 }
-Fraction operator + (const float &left, const Fraction &right) {
-    Fraction temp(left);
-    temp = temp + right;
-    temp.reduce();
-    return temp;
-}
 
 // <<<<<<<<<<<<<<<<<< Operator - >>>>>>>>>>>>>>>>>>
 Fraction Fraction ::operator - (const Fraction& other) const {
@@ -32,12 +26,6 @@ Fraction Fraction ::operator - (const Fraction& other) const {
 Fraction Fraction :: operator - (const float& other) const {
     Fraction temp (other);
     temp = *this - temp;
-    temp.reduce();
-    return temp;
-}
-Fraction operator - (const float &left, const Fraction &right) {
-    Fraction temp(left);
-    temp = temp - right;
     temp.reduce();
     return temp;
 }
@@ -55,12 +43,6 @@ Fraction Fraction :: operator / (const float& other) const {
     temp.reduce();
     return temp;
 }
-Fraction operator / (const float &left, const Fraction &right) {
-    Fraction temp(left);
-    temp = temp / right;
-    temp.reduce();
-    return temp;
-}
 
 // <<<<<<<<<<<<<<<<<< Operator * >>>>>>>>>>>>>>>>>>
 Fraction Fraction :: operator * (const Fraction& other) const {
@@ -75,35 +57,29 @@ Fraction Fraction :: operator * (const float& other) const {
     temp.reduce();
     return temp;
 }
-Fraction operator * (const float &left, const Fraction &right) {
-    Fraction temp(left);
-    temp = temp * right;
-    temp.reduce();
-    return temp;
-}
 
 // Prefix increment (++n).
-Fraction& Fraction :: operator ++() {
+Fraction& Fraction :: operator ++ () {
     _numerator += _denominator;
     return *this;
 }
 
 // Prefix decrement (--n).
-Fraction& Fraction :: operator --() {
+Fraction& Fraction :: operator -- () {
     _numerator -= _denominator;
     return *this;
 }
 
 // Postfix increment (n++).
-Fraction Fraction :: operator ++(int dont_care) {
-    Fraction copy(*this);
+Fraction Fraction :: operator ++ (int dont_care) {
+    Fraction copy (*this);
     _numerator += _denominator;
     return copy;
 }
 
 // Postfix decrement (--n).
-Fraction Fraction :: operator --(int dont_care) {
-    Fraction copy(*this);
+Fraction Fraction :: operator -- (int dont_care) {
+    Fraction copy (*this);
     _numerator -= _denominator;
     return copy;
 }
@@ -114,7 +90,7 @@ Fraction Fraction :: operator --(int dont_care) {
  * @param denominator
  * @return the gcd of the numerator and denominator
  */
-int gcd(int numerator, int denominator) {
+int gcd (int numerator, int denominator) {
     if (!numerator) { return denominator; }
     if (!denominator) { return numerator; }
     while (denominator) {
@@ -129,7 +105,7 @@ int gcd(int numerator, int denominator) {
  * Reduces a fraction before returning it.
  */
 void Fraction:: reduce () {
-    int save_gcd = gcd(this -> getNumerator(), this -> getDenominator());
+    int save_gcd = gcd (this -> getNumerator(), this -> getDenominator());
     this -> getNumerator() /= save_gcd;
     this -> getDenominator() /= save_gcd;
 }
