@@ -4,6 +4,8 @@
 #define SP2_EX3A_FRACTION_H
 #include <iostream>
 
+const int PRECISION = 1000;
+
 namespace ariel {
     class Fraction {
         // Private attributes.
@@ -13,8 +15,7 @@ namespace ariel {
     public:
         // Constructors.
         Fraction (int numerator = 1, int denominator = 1) : _numerator(numerator), _denominator(denominator) {}
-        Fraction (Fraction const &copy) : _numerator(copy._numerator), _denominator(copy._denominator) {}
-        Fraction (float num) : _numerator(num * 1000), _denominator(1000) {}
+        Fraction (float num) : _numerator(num * PRECISION), _denominator(PRECISION) {}
 
         // Stream operators.
         // <<<<<<<<<<<<<<<<<< Operator << >>>>>>>>>>>>>>>>>>
