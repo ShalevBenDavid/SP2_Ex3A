@@ -15,6 +15,7 @@ namespace ariel {
     public:
         // Constructors.
         Fraction (int numerator = 1, int denominator = 1) : _numerator(numerator), _denominator(denominator) {}
+        Fraction (const Fraction& copy) : _numerator(copy._numerator), _denominator(copy._denominator) {}
         Fraction (float num) : _numerator(num * PRECISION), _denominator(PRECISION) {}
 
         // Stream operators.

@@ -16,6 +16,15 @@ TEST_CASE("Case 1: Constructor Check.") {
     // ---- Testing: Creating a fraction with large numerator.
     // ---- Expecting: Should work.
     CHECK_NOTHROW(Fraction(100000000, 1));
+    // ---- Testing: Creating a fraction and using copy constructor.
+    // ---- Expecting: The 2 fractions should b equal.
+    Fraction f1 (1, 4);
+    Fraction f2 (f1);
+    CHECK(f1 == f2);
+    // ---- Testing: Creating a fraction using float.
+    // ---- Expecting: the fraction and the float should be equal.
+    Fraction f1 (0.25);
+    CHECK(f1 == 0.25);
 }
 
 TEST_CASE("Case 2: Commutative, Associative and Distributive .") {
@@ -84,6 +93,16 @@ TEST_CASE("Case 5: Checking Equality Cases.") {
     // ---- Expecting: Should be equal to the numerator.
     Fraction f2 (5, 1);
     CHECK(f2 == 5);
+    // ---- Testing: Creating 2 fraction differ by 1 decimal point.
+    // ---- Expecting: Should not be equal.
+    Fraction f3 (2.002);
+    Fraction f4 (2.0002);
+    CHECK_FALSE(f3 == f4);
+    // ---- Testing: Creating 2 fraction differ by 1 decimal point beyond accuracy.
+    // ---- Expecting: Should be equal.
+    Fraction f5 (1.0001);
+    Fraction f6 (1.00001);
+    CHECK(f5 == f6);
 }
 
 TEST_CASE("Case 6: Operator ++ And --.") {
