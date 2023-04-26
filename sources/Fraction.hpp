@@ -16,8 +16,8 @@ namespace ariel {
         // Constructors.
         Fraction (int numerator = 1, int denominator = 1) : _numerator(numerator), _denominator(denominator) {}
         Fraction (const Fraction& copy) : _numerator(copy._numerator), _denominator(copy._denominator) {} // Copy
-        Fraction (Fraction&& copy) : _numerator(copy._numerator), _denominator(copy._denominator) {} // Move
-        Fraction (float num) : _numerator(num * PRECISION), _denominator(PRECISION) {}
+        Fraction (Fraction&& copy) noexcept : _numerator(copy._numerator), _denominator(copy._denominator) {} // Move
+        Fraction (float num) : _numerator((int) num * PRECISION), _denominator(PRECISION) {}
 
         // Destructor
         ~Fraction() {}
@@ -113,8 +113,10 @@ namespace ariel {
 
         // <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
         Fraction& operator = (const Fraction& other);
+        Fraction& operator = (Fraction&& other) noexcept;
 
-        // Get methods.
+
+            // Get methods.
         int& getNumerator() { return _numerator; }
         int& getDenominator() { return _denominator; }
 

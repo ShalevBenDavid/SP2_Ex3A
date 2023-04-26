@@ -66,6 +66,9 @@ Fraction& Fraction :: operator = (const Fraction& other) {
     }
     return *this;
 }
+Fraction& Fraction :: operator = (Fraction&& other) noexcept {
+    return *this;
+}
 
 // Prefix increment (++n).
 Fraction& Fraction :: operator ++ () {
