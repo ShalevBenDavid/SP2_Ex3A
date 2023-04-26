@@ -23,8 +23,8 @@ TEST_CASE("Case 1: Constructor Check.") {
     CHECK(f1 == f2);
     // ---- Testing: Creating a fraction using float.
     // ---- Expecting: the fraction and the float should be equal.
-    Fraction f2 ((float) 0.25);
-    CHECK(f2 == 0.25);
+    Fraction f3 ((float) 0.25);
+    CHECK(f3 == 0.25);
 }
 
 TEST_CASE("Case 2: Commutative, Associative and Distributive .") {

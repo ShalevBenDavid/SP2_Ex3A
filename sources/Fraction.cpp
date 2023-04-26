@@ -58,6 +58,15 @@ Fraction Fraction :: operator * (const float& other) const {
     return temp;
 }
 
+// <<<<<<<<<<<<<<<<<< Operator = >>>>>>>>>>>>>>>>>>
+Fraction& Fraction :: operator = (const Fraction& other) {
+    if (this != &other) {
+        _numerator = other._numerator;
+        _denominator = other._denominator;
+    }
+    return *this;
+}
+
 // Prefix increment (++n).
 Fraction& Fraction :: operator ++ () {
     _numerator += _denominator;
